@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "ts-node-dev  --respawn ./src/index.ts",
     "build": "tsup src/index.ts --format cjs --clean",
-    "start": "node src/index.ts"
+    "start": "node src/index.ts",
+    "lint": "eslint . --ext .ts",
+    "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write"
   },
   "repository": {
     "type": "git",

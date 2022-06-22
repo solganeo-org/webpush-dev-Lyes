@@ -4,9 +4,9 @@
   "description": "TTTTTTTT",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev  --respawn ./src/server.ts",
+    "dev": "ts-node-dev  --respawn ./src/index.ts",
     "build": "tsup src/index.ts --format cjs --clean",
-    "start": "node src/server.ts"
+    "start": "node src/index.ts"
   },
   "repository": {
     "type": "git",

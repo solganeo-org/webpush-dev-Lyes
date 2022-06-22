@@ -1,15 +1,23 @@
 const express = require('express');
-require('dotenv').config();
 
-const app = express();
+export const runApplication = async (): Promise<void> => {
 
-app.use(express.static('src/public'))
+  // Instance app
+  const app = express();
 
-app.get('/', (req: any, res: any) => {
-    res.render("index")
-})
-  
-app.listen(process.env.PORT, () => {
-    console.log(`Example app listening on port ${process.env.PORT}`)
-})
+  // Render Public Folder
+  app.use(express.static('src/public'))
+
+  app.get('/', (req: any, res: any) => {
+      res.render("index")
+  })
+
+  // Start Server
+  app.listen(process.env.PORT, () => {
+      console.log(`Example app listening on port ${process.env.PORT}`)
+  })
+
+}
+
+
   

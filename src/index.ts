@@ -1,6 +1,6 @@
-import dotenv from 'dotenv'
-import { runApplication } from './server'
+import dotenv from 'dotenv';
+import { runApplication } from './server';
 
-dotenv.config()
+dotenv.config();
 
-runApplication()
+runApplication();

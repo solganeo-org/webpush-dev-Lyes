@@ -9,12 +9,12 @@ export const runApplication = async (): Promise<void> => {
   await rabbitClient.connect()
 
   if(vars.get('env') === 'development'){
-    await rabbitClient.initializeConsumer('consumer', 'test')
+    await rabbitClient.initializeConsumer('consumer', vars.get('queue'))
   }
 
   const appStateManager = new AppStateManager();
   appStateManager.saveClosableDependecy(rabbitClient)
 
-  rabbitClient.consume('consumer', 'test');
+  rabbitClient.consume('consumer', vars.get('queue'));
 
 };

@@ -12,6 +12,13 @@ const vars = convict({
     env: 'NODE_ENV',
   },
 
+  queue: {
+    doc: 'Queue to consume messages',
+    format: String,
+    default: 'test',
+    env: 'queue',
+  },
+
   subject: {
     doc: 'Notification Subject',
     format: String,

@@ -8,8 +8,29 @@ const vars = convict({
   env: {
     doc: 'The application environment.',
     format: ['production', 'development', 'test'],
-    default: 'development',
+    default: 'local',
     env: 'NODE_ENV',
+  },
+
+  subject: {
+    doc: 'Notification Subject',
+    format: String,
+    default: '',
+    env: 'subject',
+  },
+
+  public_key: {
+    doc: 'Public Key Web Push',
+    format: String,
+    default: '',
+    env: 'public_key',
+  },
+
+  private_key: {
+    doc: 'Private Key Web Push',
+    format: String,
+    default: '',
+    env: 'private_key',
   },
 
   rabbit: {

@@ -1,5 +1,7 @@
 import amqp from 'amqplib';
 import {RabbitConfig, vars} from '../config';
+import { sendWebPushNotification } from './webpush';
+import { NotificationPayload } from '../config';
 
 export class RabbitClient {
 
@@ -56,7 +58,12 @@ export class RabbitClient {
 
         channel.consume(queue, (message: any) => {
 
-            console.log(message.content.toString());
+            const payload: NotificationPayload = JSON.parse(message.content.toString())
+
+            // Send Notification
+
+            console.log("Sending ...")
+            sendWebPushNotification(payload)
 
             channel.ack(message)
 

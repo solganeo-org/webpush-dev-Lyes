@@ -25,7 +25,7 @@ export function sendWebPushNotification (notificationPayload: NotificationPayloa
         }
       };
 
-    const payload = JSON.stringify({ title: "Test", body: notificationPayload.content ,icon:'https://img.icons8.com/pastel-glyph/2x/brain--v2.png',url1:'http://localhost:8888/', url2:'https://www.yahoo.com/Oma',actionName:'archive',actiontitle:'Test_Action' });
+    const payload = JSON.stringify({ title: notificationPayload.actionTitle, body: notificationPayload.content ,icon:notificationPayload.icon,url1:notificationPayload.url1, url2:notificationPayload.url2,actionName:notificationPayload.actionName,actiontitle:notificationPayload.actionTitle });
     webpush.sendNotification(pushSubscription, payload);
 
 }

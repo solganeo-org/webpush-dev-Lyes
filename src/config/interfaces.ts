@@ -6,11 +6,14 @@ export interface RabbitConfig {
 
 export interface NotificationPayload {
 
-    endpoint: string,
-
-    p256dh: string, 
-    auth: string,
-
+    auth: string
+    p256dh: string
+    endpoint: string
     content: string
+    actionName: string
+    actionTitle: string
+    icon: string
+    url1: string
+    url2: string
 
 }

@@ -1,4 +1,5 @@
 const webpush = require('web-push');
+var amqp = require('amqplib/callback_api');
 var argv = require('minimist')(process.argv.slice(2));
 
 require('dotenv').config();
@@ -6,6 +7,27 @@ require('dotenv').config();
 if (!process.env.ENDPOINT || !process.env.P256DH || !process.env.AUTH) {
   console.log('missing some required parameters');
 }
+
+amqp.connect('amqp://localhost', function(error0, connection) {
+  if (error0) {
+    throw error0;
+  }
+  connection.createChannel(function(error1, channel) {
+    if (error1) {
+      throw error1;
+    }
+    var queue = 'test';
+
+    channel.assertQueue(queue, {
+      durable: false
+    });
+  });
+  channel.consume(queue, function(msg) {
+    console.log(" [x] Received %s", msg.content.toString());
+}, {
+    noAck: true
+  });
+});
 
 const sendNotification = (e) => {
 

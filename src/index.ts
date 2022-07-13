@@ -17,7 +17,7 @@ const runApplication = async (): Promise<void> => {
   const appStateManager = new AppStateManager();
   appStateManager.saveClosableDependecy(rabbitClient)
 
-  rabbitClient.consume('consumer', vars.get('QUEUE'));
+  rabbitClient.consume(vars.get('ENV') + '-webpush-consumer', vars.get('QUEUE'));
 
   const app: Express = express()
   const port = process.env.PORT || 3000

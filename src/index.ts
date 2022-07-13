@@ -6,13 +6,13 @@ import {vars} from "./config"
 
 const runApplication = async (): Promise<void> => {
 
+  console.log(vars)
+
   const rabbitClient = RabbitClient.getInstance()
 
   await rabbitClient.connect()
 
-  if(vars.get('ENV') === 'development'){
-    await rabbitClient.initializeConsumer('consumer', vars.get('QUEUE'))
-  }
+  await rabbitClient.initializeProduce(vars.get('ENV') + '-webpush-consumer', vars.get('QUEUE'))
 
   const appStateManager = new AppStateManager();
   appStateManager.saveClosableDependecy(rabbitClient)

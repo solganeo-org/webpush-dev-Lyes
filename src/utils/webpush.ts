@@ -4,9 +4,9 @@ import { NotificationPayload } from '../config';
 
 export function sendWebPushNotification (notificationPayload: NotificationPayload): void {
 
-    const publicKey     = String(vars.get('public_key'));
-    const privateKey    = String(vars.get('private_key'));
-    const subject       = String(vars.get('subject'));
+    const publicKey     = String(vars.get('PUBLIC_KEY'));
+    const privateKey    = String(vars.get('PRIVATE_KEY'));
+    const subject       = String(vars.get('SUBJECT'));
 
     //Email Public Key, Privite Key 
     webpush.setVapidDetails(

@@ -5,42 +5,42 @@ import * as path from 'path'
 convict.addFormat(require('convict-format-with-validator').ipaddress)
 
 const vars = convict({
-  env: {
+  ENV: {
     doc: 'The application environment.',
-    format: ['production', 'development', 'test'],
+    format: ['production', 'development', 'test', 'local'],
     default: 'local',
-    env: 'NODE_ENV',
+    env: 'ENV',
   },
 
-  queue: {
+  QUEUE: {
     doc: 'Queue to consume messages',
     format: String,
     default: 'test',
-    env: 'queue',
+    env: 'QUEUE',
   },
 
-  subject: {
+  SUBJECT: {
     doc: 'Notification Subject',
     format: String,
     default: '',
-    env: 'subject',
+    env: 'SUBJECT',
   },
 
-  public_key: {
+  PUBLIC_KEY: {
     doc: 'Public Key Web Push',
     format: String,
     default: '',
-    env: 'public_key',
+    env: 'PUBLIC_KEY',
   },
 
-  private_key: {
+  PRIVATE_KEY: {
     doc: 'Private Key Web Push',
     format: String,
     default: '',
-    env: 'private_key',
+    env: 'PRIVATE_KEY',
   },
 
-  rabbit: {
+  RABBIT: {
 
     url: {
 
@@ -53,7 +53,7 @@ const vars = convict({
   }
 })
 
-const env = vars.get('env')
+const env = vars.get('ENV')
 
 if (env == 'local') {
   vars.loadFile(path.join(__dirname, '.env.' + env + '.json'))

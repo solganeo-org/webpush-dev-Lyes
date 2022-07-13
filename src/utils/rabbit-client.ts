@@ -19,7 +19,7 @@ export class RabbitClient {
     }
 
     static getInstance = () => {
-        return RabbitClient.instance || (RabbitClient.instance = new RabbitClient(vars.get('rabbit')))
+        return RabbitClient.instance || (RabbitClient.instance = new RabbitClient(vars.get('RABBIT')))
     }
 
     async connect(): Promise<void> {

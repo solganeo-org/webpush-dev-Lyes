@@ -12,7 +12,7 @@ const runApplication = async (): Promise<void> => {
 
   await rabbitClient.connect()
 
-  await rabbitClient.initializeProduce(vars.get('ENV') + '-webpush-consumer', vars.get('QUEUE'))
+  await rabbitClient.initializeConsumer(vars.get('ENV') + '-webpush-consumer', vars.get('QUEUE'))
 
   const appStateManager = new AppStateManager();
   appStateManager.saveClosableDependecy(rabbitClient)

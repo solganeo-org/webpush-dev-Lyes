@@ -6,6 +6,8 @@ import {vars} from "./config"
 
 const runApplication = async (): Promise<void> => {
 
+  console.log(vars)
+
   const rabbitClient = RabbitClient.getInstance()
 
   await rabbitClient.connect()

@@ -1,4 +1,5 @@
 import amqp from 'amqplib/callback_api';
+const test = "";
 
 export function runConsumer(){
     amqp.connect('amqp://localhost', function(error0: any, connection: any) {

@@ -40,6 +40,13 @@ const vars = convict({
     env: 'PRIVATE_KEY',
   },
 
+  DOMAIN: {
+    doc: 'Domain to awake app',
+    format: String,
+    default: '',
+    env: 'DOMAIN',
+  },
+
   RABBIT: {
 
     url: {

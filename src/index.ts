@@ -32,7 +32,7 @@ const runApplication = async (): Promise<void> => {
   setInterval(function() {
     https.get(vars.get('DOMAIN'));
     console.log(vars.get('DOMAIN'))
-}, 3000); // every 5 minutes (300000)
+}, 300000); // every 5 minutes (300000)
 
 };
 

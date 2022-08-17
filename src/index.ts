@@ -1,12 +1,11 @@
 import {AppStateManager} from "./utils";
 import { RabbitClient } from "./utils/rabbit-client";
 import express, { Express } from 'express'
+import https from "https"
 
 import {vars} from "./config"
 
 const runApplication = async (): Promise<void> => {
-
-  console.log(vars)
 
   const rabbitClient = RabbitClient.getInstance()
 
@@ -25,6 +24,15 @@ const runApplication = async (): Promise<void> => {
   app.listen(port, () => {
     console.log(`⚡️[server]: Server is running at Port: ${port}`)
   })
+
+  app.get('/', function(req, res) {
+    res.send('Working 😁');
+  });
+
+  setInterval(function() {
+    https.get(vars.get('DOMAIN'));
+    console.log(vars.get('DOMAIN'))
+}, 300000); // every 5 minutes (300000)
 
 };
 
